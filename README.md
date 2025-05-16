@@ -25,3 +25,10 @@ Dotaz obsahuje velké množství CTE dotazů, princip je založen na výpočtu p
 5) **Má výška HDP vliv na změny ve mzdách a cenách potravin? Neboli, pokud HDP vzroste výrazněji v jednom roce, projeví se to na cenách potravin či mzdách ve stejném nebo následujícím roce výraznějším růstem?**
 
 V podstatě ohýbám předchozí query, dokonce si ponechávám kriterium hodnocení růstu mzdy. Pomocí CTE propojuju daata o cenách, o příjmech a o GDP (HDP). Počítám s GDP per capita. Principem je zhodnocení logické kombinace hodnot, funkce and a or. Výstup může být dvojí - agregovaná tabulka, která určuje četnost jednotlivých situací, a nebo tabulka, která pro každý rok dává informaci, do které kohorty patří. K dispozici jsou obě, jedna je zakomentovaná.
+
+
+Dotazy jsem ladil a upravoval pomocí claude.ai a Copilotu. Hopndě mi to pomohlo, našlo a vysvětlilo mi to chybu, navedlo k opravě doatzů. super, AI asi začnu trénovat příště :-)  
+
+K fromátování zdroj kodu jsem používal funkci DBeaveru a pak onlnie nástroj, ale upřímě mi vyhovuje zápis do řádku než zalamování. Používání zkrácených názvů tabulek mě opakovaně vytrestalo, přesun dotazu na jiný list či odmazání jednipísmenkováho názvy, a stojí celé query. Fuj :-) 
+Zrrojová data - nějaké drobnosti tam byly, už si moc nepamatuje. Někde zdvojená data o čr, přehozené jednotky v pomocném číselníku,absence kategorii průmyslu u průměrných mezd.A na další jsem asi nepřišel :-) 
+
