@@ -6,6 +6,7 @@ I. Tvorba tabulek se zdrojovými daty
 4) tvorba druhé tabulky s eknomickými ukazateli, omezení na region evropy a země evropy (tj. vč. agregovaných dat za regiony), některá data zdvojena, nutno nahrát jen unikátní hodnoty
    
 II. Tvorba jednotlivých dotazů
-1) Rostou v průběhu let mzdy ve všech odvětvích, nebo v některých klesají?
+1) **Rostou v průběhu let mzdy ve všech odvětvích, nebo v některých klesají?**
 Dotaz vyhodnotí roční průměr z průměrných mezd, vybere jen ty roky a odvětví, u kterých došlo k meziročnímu poklesu mzdy. Výstupem je tabulka s názvem odvětví, rokem, průměrnou mzdou za aktuální a za předchozí rok, mzdou za provní a za poslení rok sledovaného období, s rozdílem meziročním a rozdílem mezi mzdou z konce a počátku sledovaného období. Ve zdrojových datech byla skupina hodnot NULL, zahrnul jsem ji do souboru hodnocených dat a označil název odvetvi jako "Neuveden".
-
+2) **Kolik je možné si koupit litrů mléka a kilogramů chleba za první a poslední srovnatelné období v dostupných datech cen a mezd?**
+  Nejprve určuju společná období - roky, ke kterým mám data jak o mzdách, tak o cenách komodit, používám CTE, ale Beaver editor potom označuje jako chybu v kódu, ačkoli dotaz vykoná. Alternativou by bylo uložit si je do tabulky, view nebo si pohrát s načtením do proměnných, ale vzhledem k tomu, že dotaz běží, nyní nerozpracovávám. V tomhle případě je jedna tabulka s kratším rozsahem datumu než ta druha, šlo by obejít vhodným pořadím v joinu. Připojuju k sobě data ze zdrojové tabulky. 
