@@ -2,8 +2,7 @@
 I. Tvorba tabulek se zdrojovými daty
 1) přepracované dotazy směrující k tvorbě tabulek. Nyní je tvořeno s vyžitím CTE, vždy jako jeden SQL dotaz, který si do CTE načítá data a následně tabulku vytvoří sjednocením výsledků dílčích dotazů. Původní řešení vyžadující od uživatele spuštění několika dílčích dotazů bylo blbé - děkuju za upozornění.
 2) v rámci tvorby první tabulky ošetřena situace, kdy je chyba v jednom z pomocných číselníků kodujícím průměrnou mzdu. Dále jsou načtena data i pro neuvedenou kategorii průmyslu. 
-4) odstranění pomocných tabulek t_ondrej_pavlicek_project_SQL_primary_final_payroll_prices, t_ondrej_pavlicek_project_SQL_primary_final_payroll
-5) tvorba druhé tabulky s eknomickými ukazateli, omezení na region evropy a země evropy (tj. vč. agregovaných dat za regiony), některá data zdvojena, nutno nahrát jen unikátní hodnoty
+4) tvorba druhé tabulky s ekonomickými ukazateli, omezení na region evropy a země evropy (tj. vč. agregovaných dat za regiony), některá data zdvojena, nutno nahrát jen unikátní hodnoty
    
 II. Tvorba jednotlivých dotazů
 1) **Rostou v průběhu let mzdy ve všech odvětvích, nebo v některých klesají?**
