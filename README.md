@@ -1,9 +1,9 @@
 **# Engeto_projekt_SQL**
 I. Tvorba tabulek se zdrojovými daty
-1) tvorba pomocnych tabulek t_ondrej_pavlicek_project_sql_primary_final_payroll, t_ondrej_pavlicek_project_sql_primary_final_payroll_prices, do kjerých jsou nahrána data z jednotlivých zdrojových abulek a příslušných pomocných tabulek - číselníků.
-2) spojení dílčích tabulek pomocí UNION do t_ondrej_pavlicek_project_sql_primary_final
-3) odstranění pomocných tabulek t_ondrej_pavlicek_project_SQL_primary_final_payroll_prices, t_ondrej_pavlicek_project_SQL_primary_final_payroll
-4) tvorba druhé tabulky s eknomickými ukazateli, omezení na region evropy a země evropy (tj. vč. agregovaných dat za regiony), některá data zdvojena, nutno nahrát jen unikátní hodnoty
+1) přepracované dotazy směrující k tvorbě tabulek. Nyní je tvořeno s vyžitím CTE, vždy jako jeden SQL dotaz, který si do CTE načítá data a následně tabulku vytvoří sjednocením výsledků dílčích dotazů. Původní řešení vyžadující od uživatele spuštění několika dílčích dotazů bylo blbé - děkuju za upozornění.
+2) v rámci tvorby první tabulky ošetřena situace, kdy je chyba v jednom z pomocných číselníků kodujícím průměrnou mzdu. Dále jsou načtena data i pro neuvedenou kategorii průmyslu. 
+4) odstranění pomocných tabulek t_ondrej_pavlicek_project_SQL_primary_final_payroll_prices, t_ondrej_pavlicek_project_SQL_primary_final_payroll
+5) tvorba druhé tabulky s eknomickými ukazateli, omezení na region evropy a země evropy (tj. vč. agregovaných dat za regiony), některá data zdvojena, nutno nahrát jen unikátní hodnoty
    
 II. Tvorba jednotlivých dotazů
 1) **Rostou v průběhu let mzdy ve všech odvětvích, nebo v některých klesají?**
@@ -12,7 +12,7 @@ Dotaz vyhodnotí roční průměr z průměrných mezd, vybere jen ty roky a odv
 
 2) **Kolik je možné si koupit litrů mléka a kilogramů chleba za první a poslední srovnatelné období v dostupných datech cen a mezd?**
    
-  Nejprve určuju společná období - roky, ke kterým mám data jak o mzdách, tak o cenách komodit, používám CTE, ale Beaver editor potom označuje jako chybu v kódu, ačkoli dotaz vykoná. Alternativou by bylo uložit si je do tabulky, view nebo si pohrát s načtením do proměnných, ale vzhledem k tomu, že dotaz běží, nyní nerozpracovávám. V tomhle případě je jedna tabulka s kratším rozsahem datumu než ta druha, šlo by obejít vhodným pořadím v joinu. Připojuju k sobě data ze zdrojové tabulky. Výsledná tabulka obsahuje vypočtené množství komodity které šlo koupit v daný rok za průměrnou mzdu, název odvětví, průměrnou cenu komodity z tohoto roku, průměrnou mzdu odvetví průmyslu a rok.
+Nejprve určuju společná období - roky, ke kterým mám data jak o mzdách, tak o cenách komodit, používám CTE, ale Beaver editor potom označuje jako chybu v kódu, ačkoli dotaz vykoná. Alternativou by bylo uložit si je do tabulky, view nebo si pohrát s načtením do proměnných, ale vzhledem k tomu, že dotaz běží, nyní nerozpracovávám. V tomhle případě je jedna tabulka s kratším rozsahem datumu než ta druha, šlo by obejít vhodným pořadím v joinu. Připojuju k sobě data ze zdrojové tabulky. Výsledná tabulka obsahuje vypočtené množství komodity které šlo koupit v daný rok za průměrnou mzdu, název odvětví, průměrnou cenu komodity z tohoto roku, průměrnou mzdu odvetví průmyslu a rok.
   
 3) **Která kategorie potravin zdražuje nejpomaleji (je u ní nejnižší percentuální meziroční nárůst)?**
    
@@ -29,6 +29,6 @@ V podstatě ohýbám předchozí query, dokonce si ponechávám kriterium hodnoc
 
 Dotazy jsem ladil a upravoval pomocí claude.ai a Copilotu. Hopndě mi to pomohlo, našlo a vysvětlilo mi to chybu, navedlo k opravě doatzů. super, AI asi začnu trénovat příště :-)  
 
-K fromátování zdroj kodu jsem používal funkci DBeaveru a pak onlnie nástroj, ale upřímě mi vyhovuje zápis do řádku než zalamování. Používání zkrácených názvů tabulek mě opakovaně vytrestalo, přesun dotazu na jiný list či odmazání jednipísmenkováho názvy, a stojí celé query. Fuj :-) 
-Zrrojová data - nějaké drobnosti tam byly, už si moc nepamatuje. Někde zdvojená data o čr, přehozené jednotky v pomocném číselníku,absence kategorii průmyslu u průměrných mezd.A na další jsem asi nepřišel :-) 
+K fromátování zdroj kodu jsem používal funkci DBeaveru a pak online nástroj, ale upřímě mi vyhovuje zápis do řádku než zalamování. Používání zkrácených názvů tabulek mě opakovaně vytrestalo, přesun dotazu na jiný list či odmazání jednipísmenkováho názvy, a stojí celé query. Fuj :-) 
+Zdrojová data - nějaké drobnosti tam byly, už si moc nepamatuje. Někde zdvojená data o čr, přehozené jednotky v pomocném číselníku,absence kategorii průmyslu u průměrných mezd. A na další jsem asi nepřišel :-) 
 
