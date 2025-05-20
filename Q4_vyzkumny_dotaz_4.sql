@@ -1,9 +1,6 @@
 /*
  * 4. Existuje rok, ve kterém byl meziroční nárůst cen potravin výrazně vyšší než růst mezd (větší než 10 %)?
  * */	
-	
-	--Ze zadání mi nebylo zřejmé, zda hodnotit změnu cen po jednotlivých kategoriích potravin, a kategoriích průmyslu - dávalo by mi smysl mít takto detailní vhledl, protože by to bylo výhodnější pro doplňující otázky. (aspoň ze svojí praxe kontingenčních tabulek vím, že je často velmi užitečné mít šanci rozkliknout si detail a potom se vrátit o level výš. ale v sql bych to nedal, připravil bych si to do csv, a přes power query načetl do excelu a kontringenčky. Dalo by to 27x19x12 hodnot,fuj)
-	--SELECT count(DISTINCT category_name), count (DISTINCT industry_name), 2018-2006, 27*12*19 FROM t_ondrej_pavlicek_project_sql_primary_final
 	WITH food_price_avg_yearly
      AS (
 SELECT
@@ -117,6 +114,7 @@ SELECT
        category_name,
 	Round(incomes_avg_yearly_3.difference_relative_yty * 100, 2) AS
        incomes_difference_relative_YTY,
+    Round(food_price_avg_yearly_3.difference_relative_yty / incomes_avg_yearly_3.difference_relative_yty * 100, 2)   AS Food_Incomes_Ratio,
 	CASE
 		WHEN food_price_avg_yearly_3.difference_relative_yty >
               incomes_avg_yearly_3.difference_relative_yty * 1.1 THEN

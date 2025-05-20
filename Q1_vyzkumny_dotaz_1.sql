@@ -30,7 +30,6 @@ WITH incomes_by_industry_name
                    year)
 SELECT industry_name,
        year,
-       -- umyslne zobrazuju navic sloupce pro snažší kontrolu výstupu
        avg_income,
        prev_year_income,
        ( avg_income - prev_year_income ) AS income_change,

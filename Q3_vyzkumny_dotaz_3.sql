@@ -1,7 +1,6 @@
 /*
  * 3. Která kategorie potravin zdražuje nejpomaleji (je u ní nejnižší percentuální meziroční nárůst)?
- * */	
-	
+ * */		
 	-- VYHODNOTIM PRUMERNOU MEZIROCNI ZMENU CENY U JEDNOTLIVYCH KATEGORII
 WITH price_review AS
 (
@@ -33,4 +32,3 @@ SELECT   category_name ,
 FROM     summary_price_review
 GROUP BY category_name
 ORDER BY difference_relative_avg ASC limit 1; --TATO MĚLA NEJNIŽŠÍ PRŮMĚRNOU HODNOTU RELATIVNICH MEZIROCNICH ZDRAZENI
--- difference_abs_period_avg ASC LIMIT 1;--TATO KATEGORIE ZDRAŽILA NEJMÉNĚ ZA CELÉ OBDOBÍ HODNOCENÉ 2006 - 2018

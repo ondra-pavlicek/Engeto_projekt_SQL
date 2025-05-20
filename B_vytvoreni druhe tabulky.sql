@@ -17,6 +17,3 @@ CREATE TABLE IF NOT EXISTS t_ondrej_pavlicek_project_sql_secondary_final AS
           AND gdp IS NOT NULL
    ORDER  BY country,
              year DESC);
-
---SELECT * FROM t_ondrej_pavlicek_project_sql_secondary_final;
---DROP TABLE t_ondrej_pavlicek_project_sql_secondary_final;

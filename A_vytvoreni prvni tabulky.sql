@@ -3,22 +3,6 @@
  * VYTVORENI POMOCNYCH TABULEK KTERE SPOJIM DO PRVNI TABULUKY, POMOCNE TABULKY POTOM SMAZU
  * 
  * */
-
--- vytvorim 2 pomocne tabulky, které následně spojím do jedine, oproti puvodnimu reseni je prepracovano tak, aby bylo pomocí CTE, takže si data načtu dvěma pomocnými dotazy. využiju CREATE TABLE AS,  aby vše proběhlo v jediném dotazu, 
-
-/*
-* Cesty jak by šlo opravit napojení unit_code aby výsledkem byla Kč - obejití přehozených kodů v číselníku:
-* 1) 'kč' AS mena,
-* 2) v joinu upravit podmínku na cp.unit_code <> cpu.code , což mi projde jen proto, že jsou jen dvě hodnoty cpu.code
-* 3) update v databázi/výstupu v příslušném sloupci
-* 4) volím využití jednoduché matematiky a přičtení 80203, abych dostal hodnotu klíče odpovídajícího Kč :-) 
-* ponechám si i sloupec cp.industry_branch_code, abych nepřišel o údaj příslušný k nezařazeným 22 hodnotám.
-* */
---vyřazením sloupce cp.industry_branch_code BYCH PŘIŠEL o 22 hodnot, u kterých nebyl vyplněn atribut a měly hodnotu "NULL". Může to být chyba v datech, ale taky příležitost jak ztratit část dat. ZACHOVÁM HO A NÁSLEDNĚ OŠETŘÍM HODNOTU NULL JAKO NEUVEDENO
- 
- 
-
--- VŠE DO JEDINÉHO DOTAZU:
 CREATE TABLE t_ondrej_pavlicek_project_sql_primary_final AS
 WITH TABLE_1 AS (
     SELECT
@@ -66,6 +50,3 @@ TABLE_2 AS (
 SELECT * FROM TABLE_1
 UNION ALL
 SELECT * FROM TABLE_2;
-
---DROP TABLE t_ondrej_pavlicek_project_sql_primary_final;
---SELECT * FROM  t_ondrej_pavlicek_project_sql_primary_final;

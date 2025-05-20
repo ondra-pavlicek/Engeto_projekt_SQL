@@ -186,8 +186,7 @@ SELECT
 FROM
 	food_price_incomes_gdp
     )
-/*
--- Tahle alternativa zobrazi vyhodnoceni pro jednotlive roky    
+/*-- Tahle alternativa zobrazi vyhodnoceni pro jednotlive roky    
 SELECT
 gdp_final,
 YEAR
